@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { TodoContext } from '../context';
 
 const Todo = ({todo}) => {
@@ -19,7 +19,7 @@ const handleDelete = (id) => {
     const newArray = todos.filter((todo) => todo.id !== id);
     dispatch({
       type: "SET_TODOS",
-      payload: newTodos,
+      payload: newArray,
   });
 };
 

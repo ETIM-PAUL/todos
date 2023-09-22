@@ -8,7 +8,6 @@ const initialState = {
 const reducer = (state, action) => {
     switch (action.type) {
         case "SET_TODOS":
-            localStorage.setItem("todos", action.payload);
             return {
                 ...state,
                 todos: action.payload,
