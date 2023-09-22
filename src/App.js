@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react";
 import "./App.css";
 import Todo from "./components/todo";
 import { TodoContext } from "./context";
+import NewTodo from "./components/newTodo";
 
 function App() {
     const { state, dispatch } = useContext(TodoContext);
@@ -31,10 +32,14 @@ function App() {
                 <ul>
                     {!!state?.todos.length &&
                         state?.todos.map((todo) => (
-                           <Todo todo={todo}/>
+                            <div key={todo?.id}>
+                                <Todo todo={todo}/>
+                            </div>
                         ))}
                 </ul>
+            <NewTodo/>
             </div>
+
         </div>
     );
 }

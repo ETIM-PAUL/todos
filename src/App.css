@@ -6,6 +6,26 @@
     margin: 4rem auto;
 }
 
+.add-input{
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+}
+
+.add-input > input {
+    padding: 8px;
+    border: 1px solid #000;
+}
+
+.add-input > input:focus{
+    outline: 1px solid #000;
+}
+
+.add-input > button {
+    width: 100px;
+    cursor: pointer;
+}
+
 .todo {
     margin: 0.8rem 0;
 }
