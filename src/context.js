@@ -3,7 +3,9 @@ export const TodoContext = createContext();
 
 const initialState = {
     todos: [],
-    modal: false,
+    addModal: false,
+    editModal: false,
+    toastMessage: "",
 };
 
 const reducer = (state, action) => {
@@ -16,12 +18,22 @@ const reducer = (state, action) => {
         case "OPEN_ADD_MODAL":
             return {
                 ...state,
-                modal: true,
+                addModal: true,
             }
         case "CLOSE_ADD_MODAL":
             return {
                 ...state,
-                modal: false,
+                addModal: false,
+            }
+        case "OPEN_EDIT_MODAL":
+            return {
+                ...state,
+                editModal: true,
+            }
+        case "CLOSE_EDIT_MODAL":
+            return {
+                ...state,
+                editModal: false,
             }
 
         default:
@@ -29,9 +41,28 @@ const reducer = (state, action) => {
     }
 };
 
+export const showToast = (dispatch, message, timeout = 3000, toastStatus = "success") => {
+    dispatch({
+        type: "SNACKBAR",
+        payload: {
+            message,
+            toastStatus
+        },
+    });
+
+    setTimeout(() => {
+        dispatch({
+            type: "SNACKBAR",
+            payload: {
+                message: "",
+            },
+        });
+    }, timeout);
+};
+
+
 const TodoProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
-
     return (
         <TodoContext.Provider
             value={{

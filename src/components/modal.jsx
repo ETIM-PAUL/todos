@@ -2,8 +2,8 @@ import React, { useContext } from 'react'
 import { TodoContext } from '../context'
 
 
-const Modal = () => {
-  const { state: { modal }, dispatch } = useContext(TodoContext)
+const AddModal = () => {
+  const { state: { addModal }, dispatch } = useContext(TodoContext)
 
   const hideModal = () => {
     dispatch({
@@ -12,13 +12,13 @@ const Modal = () => {
   }
 
   return (
-    <div id="myModal" className={` ${modal === true ? "block" : "hidden"} modal fixed bg-[#000] opacity-70 inset-0 w-full h-full flex items-center justify-center`}>
+    <div id="myModal" className={` ${addModal === true ? "block" : "hidden"} modal fixed bg-[#000] opacity-70 inset-0 w-full h-full flex items-center justify-center`}>
       <div className="modal-dialog bg-white shadow-lg rounded-md w-1/2">
         <div className="modal-content py-4 px-6">
 
           <div className="modal-header flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-semibold">Modal Title</h2>
-            <button id="closeModalButton" className="text-gray-500 hover:text-gray-700 focus:outline-none">
+            <h2 className="text-2xl font-semibold">Add Todo</h2>
+            <button onClick={hideModal} id="closeModalButton" className="text-gray-500 hover:text-gray-700 focus:outline-none">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
               </svg>
@@ -45,4 +45,4 @@ const Modal = () => {
   )
 }
 
-export default Modal
+export default AddModal
