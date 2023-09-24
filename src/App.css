@@ -1,27 +1,24 @@
-* {
-    background-color: #999;
-}
 .todo-wrapper {
     width: 50rem;
     margin: 4rem auto;
 }
 
-.add-input{
+.add-input {
     display: flex;
     gap: 4px;
     justify-content: center;
 }
 
-.add-input > input {
+.add-input>input {
     padding: 8px;
     border: 1px solid #000;
 }
 
-.add-input > input:focus{
+.add-input>input:focus {
     outline: 1px solid #000;
 }
 
-.add-input > button {
+.add-input>button {
     width: 100px;
     cursor: pointer;
 }

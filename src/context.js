@@ -3,6 +3,7 @@ export const TodoContext = createContext();
 
 const initialState = {
     todos: [],
+    modal: false,
 };
 
 const reducer = (state, action) => {
@@ -12,6 +13,16 @@ const reducer = (state, action) => {
                 ...state,
                 todos: action.payload,
             };
+        case "OPEN_ADD_MODAL":
+            return {
+                ...state,
+                modal: true,
+            }
+        case "CLOSE_ADD_MODAL":
+            return {
+                ...state,
+                modal: false,
+            }
 
         default:
             return state;
