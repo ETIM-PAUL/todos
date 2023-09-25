@@ -33,9 +33,15 @@ const Todo = ({ todo }) => {
         });
     };
 
+    const showDeleteModal = () => {
+        dispatch({
+            type: "OPEN_DELETE_MODAL"
+        })
+    }
+
     return (
         <div>
-            <li className="todo" key={todo.id}>
+            {/* <li className="todo" key={todo.id}>
                 <input
                     type="checkbox"
                     checked={todo.completed}
@@ -74,6 +80,16 @@ const Todo = ({ todo }) => {
                 >
                     🗑️
                 </button>
+            </li> */}
+            <li className="flex justify-between items-center">
+                <div className="flex items-center space-x-2">
+                    <input type="checkbox" className="form-checkbox h-5 w-5 text-blue-500" />
+                    <span className="text-gray-800">{todo.name}</span>
+                </div>
+                <div className="flex gap-2">
+                    <button className="text-blue-500 font-bold hover:text-blue-700">Edit</button>
+                    <button onClick={showDeleteModal} className="text-red-500 font-bold hover:text-red-700">Delete</button>
+                </div>
             </li>
         </div>
     )

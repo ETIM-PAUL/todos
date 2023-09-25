@@ -9,7 +9,7 @@ const Toaster = () => {
   const show = toastMessage.length > 0;
 
   return show ? (
-    <div id="mkd-toast" className={`fixed top-5 right-5 flex items-center w-full max-w-xs p-4 text-gray-500 bg-slate-100 rounded-lg shadow-md dark:text-gray-400 ${toastStatus === "success" ? "bg-gradient-to-bl from-green-600 to-green-800" : toastStatus === "error" ? "bg-gradient-to-bl from-red-600 to-red-800" : "bg-gradient-to-bl from-yellow-600 to-yellow-800"}`} role="alert">
+    <div id="todo-toast" className={`fixed top-5 right-5 flex items-center w-full max-w-xs p-4 text-gray-500 bg-blue-800 rounded-lg shadow-md dark:text-gray-400 ${toastStatus === "success" ? "bg-blue-800" : toastStatus === "error" ? "bg-gradient-to-bl from-red-600 to-red-800" : "bg-blue-800"}`} role="alert">
       <div className="text-[1.2rem] font-normal text-white">{toastMessage}</div>
       <div className="flex items-center ml-auto space-x-2">
         <button

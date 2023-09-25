@@ -5,15 +5,16 @@ const initialState = {
     todos: [],
     addModal: false,
     editModal: false,
+    deleteModal: false,
     toastMessage: "",
 };
 
 const reducer = (state, action) => {
     switch (action.type) {
-        case "SET_TODOS":
+        case "ADD_TODO":
             return {
                 ...state,
-                todos: action.payload,
+                todos: [...state?.todos, action.payload],
             };
         case "OPEN_ADD_MODAL":
             return {
@@ -34,6 +35,16 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 editModal: false,
+            }
+        case "OPEN_DELETE_MODAL":
+            return {
+                ...state,
+                deleteModal: true,
+            }
+        case "CLOSE_DELETE_MODAL":
+            return {
+                ...state,
+                deleteModal: false,
             }
 
         default:
