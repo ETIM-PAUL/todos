@@ -10,6 +10,12 @@ const DeleteModal = () => {
     })
   }
 
+  const deleteTodo = () => {
+    dispatch({
+      type: "DELETE_TODO",
+    })
+  }
+
   return (
     <>
       <div className={`${deleteModal === true ? "block" : "hidden"} fixed inset-0 z-10 overflow-y-auto`}>
@@ -45,6 +51,7 @@ const DeleteModal = () => {
                 </h4>
                 <div className="items-center gap-2 mt-3 sm:flex">
                   <button
+                    onClick={deleteTodo}
                     className="w-full mt-2 p-2.5 flex-1 text-white bg-red-600 rounded-md outline-none ring-offset-2 ring-red-600 focus:ring-2"
                   >
                     Delete

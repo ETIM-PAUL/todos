@@ -4,14 +4,12 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import TodoProvider from './context';
-import Toaster from './components/Toaster';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <TodoProvider>
       <App />
-      <Toaster />
     </TodoProvider>
   </React.StrictMode>
 );

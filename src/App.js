@@ -1,15 +1,14 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import "./App.css";
 import Todo from "./components/todo";
 import { TodoContext } from "./context";
-import NewTodo from "./components/newTodo";
 import TopNav from "./components/TopNav";
 import AddModal from "./components/AddModal";
-import Tab from "./components/Tab";
 import DeleteModal from "./components/DeleteModal";
+import EditModal from "./components/EditModal";
 
 function App() {
-    const { state: { todos }, dispatch } = useContext(TodoContext);
+    const { state: { todos, activeTodo }, dispatch } = useContext(TodoContext);
     const [activeTab, setActiveTab] = useState("All");
     const tabs = ["All", "Completed", "UnCompleted"]
 
@@ -27,11 +26,11 @@ function App() {
                 </div>
             </div>
 
-            <main className="flex-grow container mx-auto py-8">
+            <main className="flex-grow container mx-auto py-8 w-full max-w-3xl">
 
                 {/* All Todos */}
                 {activeTab === "All" &&
-                    <ul className="bg-white rounded-lg shadow-2xl border p-4 space-y-4">
+                    <ul className="">
                         {!!todos.length ?
                             <div>
                                 {todos.map((todo) => (
@@ -39,7 +38,7 @@ function App() {
                                 ))}
                             </div>
                             :
-                            <div>
+                            <div className="bg-white rounded-lg shadow-md border p-4 space-y-4">
                                 <span>No Tasks has been added</span>
                             </div>
                         }
@@ -48,16 +47,16 @@ function App() {
 
                 {/* Completed Todos */}
                 {activeTab === "Completed" &&
-                    <ul className="bg-white rounded-lg shadow-2xl border p-4 space-y-4">
+                    <ul className="">
                         {!!todos.filter((todo) => todo.completed).length ?
                             <div>
-                                {todos.filter((todo) => !todo.completed).map((todo) => (
+                                {todos.filter((todo) => todo.completed).map((todo) => (
                                     <Todo key={todo?.id} todo={todo} />
                                 ))}
                             </div>
                             :
-                            <div>
-                                <span>No Tasks has been completed</span>
+                            <div className="bg-white rounded-lg shadow-md border p-4 space-y-4">
+                                <span>No Completed task(s)</span>
                             </div>
                         }
                     </ul>
@@ -65,7 +64,7 @@ function App() {
 
                 {/* Completed Todos */}
                 {activeTab === "UnCompleted" &&
-                    <ul className="bg-white rounded-lg shadow-2xl border p-4 space-y-4">
+                    <ul className="">
                         {!!todos.filter((todo) => !todo.completed).length ?
                             <div>
                                 {todos.filter((todo) => !todo.completed).map((todo) => (
@@ -73,27 +72,17 @@ function App() {
                                 ))}
                             </div>
                             :
-                            <div>
-                                <span>No Tasks has been completed</span>
+                            <div className="bg-white rounded-lg shadow-md border p-4 space-y-4">
+                                <span>No Uncompleted task(s)</span>
                             </div>
                         }
                     </ul>
                 }
             </main>
 
-            {/* <div className="App">
-                <div className="todo-wrapper">
-                    <ul>
-                        {!!state?.todos.length &&
-                            state?.todos.map((todo) => (
-                                <div key={todo?.id}>
-                                    <Todo todo={todo} />
-                                </div>
-                            ))}
-                    </ul>
-                    <NewTodo />
-                </div>
-            </div> */}
+            {activeTodo &&
+                <EditModal />
+            }
             <AddModal />
             <DeleteModal />
         </div>
